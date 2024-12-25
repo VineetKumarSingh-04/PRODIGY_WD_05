@@ -1,12 +1,9 @@
-// Replace this with your OpenWeatherMap API key
 const apiKey = '4a400b37cf0611555ec7c8926754afe7';
 
-// Get weather by city
 async function getWeather() {
     const city = document.getElementById('city').value;
     const weatherDataDiv = document.getElementById('weatherData');
 
-    // Clear previous data and show loading spinner
     weatherDataDiv.innerHTML = '<div class="loader"></div>';
 
     if (!city) {
@@ -28,7 +25,6 @@ async function getWeather() {
     }
 }
 
-// Get weather by coordinates (user's location)
 async function getWeatherByLocation(lat, lon) {
     const weatherDataDiv = document.getElementById('weatherData');
     weatherDataDiv.innerHTML = '<div class="loader"></div>';
@@ -47,7 +43,6 @@ async function getWeatherByLocation(lat, lon) {
     }
 }
 
-// Display weather data
 function displayWeatherData(data) {
     const weatherDataDiv = document.getElementById('weatherData');
     const weatherHTML = `
@@ -60,11 +55,9 @@ function displayWeatherData(data) {
     `;
     weatherDataDiv.innerHTML = weatherHTML;
 
-    // Update background based on weather condition
     updateBackground(data.weather[0].main.toLowerCase());
 }
 
-// Update background dynamically
 function updateBackground(condition) {
     const body = document.body;
 
@@ -90,7 +83,6 @@ function updateBackground(condition) {
     }
 }
 
-// Get user's location on page load
 function fetchUserLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -109,5 +101,4 @@ function fetchUserLocation() {
     }
 }
 
-// Call fetchUserLocation on page load
 window.onload = fetchUserLocation;
